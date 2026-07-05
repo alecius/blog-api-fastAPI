@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from app import models, schemas
 from app.core.security import hash_password
 from app.dependencies import get_db
+from app.dependencies import get_current_user
 
 router = APIRouter(
     prefix="/users",
@@ -43,6 +44,17 @@ def get_users(
     users = db.query(models.User).all()
 
     return users
+
+#fetch current user by JWT Token
+@router.get(
+    "/me",
+    response_model=schemas.UserResponse,
+)
+def get_me(
+    current_user: models.User = Depends(get_current_user),
+):
+    return current_user
+
 
 #FETCH USER BY ID
 @router.get("/{user_id}",
@@ -119,3 +131,4 @@ def delete_user(
 
     db.delete(user)
     db.commit()
+
