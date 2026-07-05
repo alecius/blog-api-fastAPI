@@ -14,3 +14,16 @@ class UserResponse(BaseModel):
     username: str
     email: EmailStr
     is_active: bool
+
+class UserUpdate(BaseModel):
+    username: str
+    email: EmailStr
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
