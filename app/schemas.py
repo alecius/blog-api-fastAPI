@@ -27,3 +27,21 @@ class UserLogin(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+class BlogCreate(BaseModel):
+    title: str
+    content: str
+
+class BlogUpdate(BaseModel):
+    title: str
+    content: str
+
+class BlogResponse(BaseModel):
+    id: int
+    title: str
+    content: str
+    owner_id: int
+
+    model_config = ConfigDict(
+        from_attributes=True,
+    )
