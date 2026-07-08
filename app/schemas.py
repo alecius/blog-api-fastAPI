@@ -36,12 +36,22 @@ class BlogUpdate(BaseModel):
     title: str
     content: str
 
+class BlogOwner(BaseModel):
+    id: int
+    username: str
+    email: str
+
+    model_config = ConfigDict(
+        from_attributes=True,
+)
+    
 class BlogResponse(BaseModel):
     id: int
     title: str
     content: str
-    owner_id: int
+    owner: BlogOwner
 
     model_config = ConfigDict(
         from_attributes=True,
-    )
+)
+
