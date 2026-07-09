@@ -43,7 +43,7 @@ class BlogOwner(BaseModel):
 
     model_config = ConfigDict(
         from_attributes=True,
-)
+    )
     
 class BlogResponse(BaseModel):
     id: int
@@ -53,5 +53,27 @@ class BlogResponse(BaseModel):
 
     model_config = ConfigDict(
         from_attributes=True,
-)
+    )
 
+class CommentCreate(BaseModel):
+    content: str
+
+class CommentUpdate(BaseModel):
+    content: str
+
+class CommentUser(BaseModel):
+    id: int
+    username: str
+
+    model_config = ConfigDict(
+        from_attributes=True,
+    )
+
+class CommentResponse(BaseModel):
+    id: int
+    content: str
+    user: CommentUser
+
+    model_config = ConfigDict(
+        from_attributes=True,
+    )

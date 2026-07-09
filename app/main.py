@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import users,auth,blogs
+from app.routers import users,auth,blogs,comments
 
 app = FastAPI(
     title="Blog API",
@@ -10,6 +10,7 @@ app = FastAPI(
 app.include_router(users.router)
 app.include_router(auth.router)
 app.include_router(blogs.router)
+app.include_router(comments.router)
 
 @app.get("/")
 def root():
